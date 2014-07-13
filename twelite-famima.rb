@@ -34,7 +34,6 @@ loop do
 
 	# check button state
 	button_str = l[34, 1]
-	puts button_str
 
 	if button_str == "1"
 		button_state = true
