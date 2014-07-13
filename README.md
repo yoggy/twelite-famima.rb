@@ -1,32 +1,51 @@
 twelite-famima.rb
 ====
 TWE-Lite DIPとToCoStickを使用した扉の開閉を検知するサンプルプログラム。
-家の扉を扉を空けたらファミマの入店音を再生する。
+
+家の扉を扉を空けたらファミマの入店音を再生することを目的に作成した。
+
+* ![TWE-Lite DIP](http://tocos-wireless.com/assets/TWE-Lite-DIP-match.jpg) ![ToCoStick](http://tocos-wireless.com/jp/products/TWE-Lite-USB/IMG_0909.jpg)
+
+材料
+====
 
 TWE-Lite DIP
-* ![TWE-Lite DIP](http://tocos-wireless.com/assets/TWE-Lite-DIP-match.jpg)
 * http://tocos-wireless.com/jp/products/TWE-Lite-DIP/
 
 ToCoStick
-* ![ToCoStick](http://tocos-wireless.com/jp/products/TWE-Lite-USB/IMG_0909.jpg)
 * http://tocos-wireless.com/jp/products/TWE-Lite-USB/
+
+VX-56-1A3マイクロスイッチ
+* http://www.marutsu.co.jp/shohin_9568/
+
+ボタン電池基板取付用ホルダー(CR2032用)
+* http://akizukidenshi.com/catalog/g/gP-01443/
+
+ボタン電池 CR2032
+* http://akizukidenshi.com/catalog/g/gB-05694/
+
+そこそこ粘着力が強力な両面テープ
+* http://www.nichiban.co.jp/stationery/nt_sponge/index.html
 
 使い方
 ====
 扉にTWE-Lite DIP子機を設置して扉の開閉状態を検出し、子機から送られてくる扉の開閉状態をPC側に装着したToCoStickを通じて取得する。
 
-TWE-Lite DIP子機はDI1-GND間に開閉を検知するためのスイッチを接続する。以下URLを参考。
-* [TWE-Lite DIP使用方法（初級編） - TOCOS-WIRELESS.COM](http://tocos-wireless.com/jp/products/TWE-Lite-DIP/TWE-Lite-DIP-step1.html)
+TWE-Lite DIP子機は次のように配線を行った。
+  * Vcc(pin28), GND(pin1)間にボタン電池(CR2032)を接続
+  * M3(pin2), GND(pin1)間を接続 (間欠1秒モードを設定。後述)
+  * DI1(pin15), GND(pin14)に開閉を検知するためのスイッチを接続
+
+  * ![スイッチ接続例](https://farm4.staticflickr.com/3902/14618385336_f7f2065685_n.jpg) 
 
 サンプルプログラムでは、扉が開いたときに接点が閉じるように配線していることを想定している。
-スイッチは以下のスイッチを使用した。
 
-  * [【VX-56-1A3】マイクロスイッチ 【マルツパーツ館WebShop】](http://www.marutsu.co.jp/shohin_9568/)
+TWE-Lite DIP子機とスイッチを強力な両面テープで扉に固定し、扉の開閉状態を検知できるように設置した。
+目立たないように扉の上部に設置するため、両面テープで適当に止めている見た目は気にしない方向で。
 
-今回はTWE-Lite DIP子機とスイッチを強力な両面テープで扉に固定し、扉の開閉状態を検知できるように設置した。
-* ![スイッチ接続例](https://farm4.staticflickr.com/3902/14618385336_f7f2065685_m.jpg) ![設置例](https://farm4.staticflickr.com/3840/14641373855_8eee119a91_m.jpg)
+* ![設置例](https://farm4.staticflickr.com/3840/14641373855_8eee119a91_n.jpg) 
 
-電池を接続してTWE-Lite DIP子機を起動すると、親機であるToCoStick側にデータが送信されてくる。
+電池を接続してTWE-Lite DIP子機を起動すると、親機であるToCoStick側に子機の入力ピンの情報を表す文字列が送信されてくる。
 
 <pre>
 :7881150157810076ED780BE1000A942900013408190254DF  ←扉を閉じているとき
@@ -55,11 +74,11 @@ TWE-Lite DIP子機の動作確認ができたら、twelite-famima.rbスクリプ
 
 <pre>
 $ cd ~
-$ git clone 
-$ cd 
+$ git clone https://github.com/yoggy/twelite-famima.rb.git
+$ cd twelite-famima.rb/
 $ sudo gem install serialport
 $ open http://commons.nicovideo.jp/material/nc18763
-  ※ ファミマ入店音(nc18763.mp3)をダウンロード
+  ※ 上記URLからファミマ入店音(nc18763.mp3)をダウンロード
 
 $ vi twelite-famima.rb
   ※ ToCoStickが接続されているデバイスファイル名を環境に合わせて変更。
@@ -67,3 +86,28 @@ $ vi twelite-famima.rb
 $ ruby twelite-famima.rb
 
 </pre>
+
+TWE-Lite DIPの動作モードについて
+====
+TWE-Lite DIPには子機として動作する際、数種類の動作モードが用意されている。
+
+* ![TWE-Lite DIP使用方法（中級編） - TOCOS-WIRELESS.COM](http://tocos-wireless.com/jp/products/TWE-Lite-DIP/TWE-Lite-DIP-step2.html)
+
+動作モードによって連続動作・間欠動作や間欠動作の間隔などが異なり、
+また間欠動作の間隔によってTWE-Lite DIPの消費電力が異なる。
+
+扉の開閉動作を検知する際の反応速度を優先する場合は子機を連続モードで動作させるのが望ましいが、
+今回はコンパクト＆簡単に扉に設置できることを目的としてボタン電池(CR2032)を使用しているため、
+TWE-Lite DIP子機を間欠1秒モードで動作させている。
+
+ボタン電池(CR2032)を使ってTWE-Lite DIP単体を間欠1秒モードで動作させた場合、
+1ヶ月程度は駆動できると公式サイトには掲載されている。
+
+TWE-Lite DIP子機を間欠1秒モードで動作させる場合は、モードピンM3(pin27)をGNDに接続する。
+
+
+
+
+
+
+
