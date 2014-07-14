@@ -93,7 +93,7 @@ TWE-Lite DIPの動作モードについて
 ====
 TWE-Lite DIPには子機として動作する際、数種類の動作モードが用意されている。
 
-* ![TWE-Lite DIP使用方法（中級編） - TOCOS-WIRELESS.COM](http://tocos-wireless.com/jp/products/TWE-Lite-DIP/TWE-Lite-DIP-step2.html)
+* [TWE-Lite DIP使用方法（中級編） - TOCOS-WIRELESS.COM](http://tocos-wireless.com/jp/products/TWE-Lite-DIP/TWE-Lite-DIP-step2.html)
 
 動作モードによって連続動作・間欠動作や間欠動作の間隔などが異なり、
 また間欠動作の間隔によってTWE-Lite DIPの消費電力が異なる。
