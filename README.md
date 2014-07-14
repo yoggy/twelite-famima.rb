@@ -44,8 +44,7 @@ TWE-Lite DIP子機は次のように配線を行った。
 TWE-Lite DIP子機とスイッチを強力な両面テープで扉に固定し、扉の開閉状態を検知できるように設置した。
 目立たないように扉の上部に設置するため、両面テープで適当に止めている見た目は気にしない方向で。
 
-* ![設置例1](https://farm4.staticflickr.com/3840/14641373855_8eee119a91_n.jpg) 
-* ![設置例2](https://farm4.staticflickr.com/3889/14647971722_ea714df95e_n.jpg) 
+* ![設置例1](https://farm4.staticflickr.com/3840/14641373855_8eee119a91_n.jpg) ![設置例2](https://farm4.staticflickr.com/3889/14647971722_ea714df95e_n.jpg) 
 
 電池を接続してTWE-Lite DIP子機を起動すると、親機であるToCoStick側に子機の入力ピンの情報を表す文字列が送信されてくる。
 
