@@ -69,7 +69,9 @@ ToCoStickはPCに接続すると仮想シリアルポートとしてOSに認識�
 以下はMac OSでscreenを使用してシリアルポートを開く例。
 デバイスファイル名は接続するポートなどによって名前が変わるため、環境に合わせて適切に変更すること。
 
+<pre>
   $ screen /dev/tty.usbserial-AHXDVUSV 115200
+</pre>
 
 送られてくるデータのフォーマットについては、下記URL参照。
 
@@ -110,6 +112,11 @@ TWE-Lite DIP子機を間欠1秒モードで動作させている。
 1ヶ月程度は駆動できると公式サイトには掲載されている。
 
 TWE-Lite DIP子機を間欠1秒モードで動作させる場合は、モードピンM3(pin27)をGNDに接続する。
+
+モードピンM3(pin27)をGNDに接続する方法で動作モードの設定を行った場合、TWE-Lite内部のプルアップ抵抗(50kΩ)に
+電流が流れると思われるため、さらなる省電力を狙う場合はインタラクティブモードから間欠1秒モードを設定した方が良いかもしれない。
+
+* [設定変更（インタラクティブ）モード - TOCOS-WIRELESS.COM](http://tocos-wireless.com/jp/products/TWE-Lite-DIP/TWE-Lite-DIP-step3-interactive.html)
 
 セキュリティについての考察
 ====
