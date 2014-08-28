@@ -2,7 +2,7 @@ twelite-famima.rb
 ====
 TWE-Lite DIPとToCoStickを使用した扉の開閉を検知するサンプルプログラム。
 
-自宅の扉を空けたらファミマの入店音を再生することを目的に試作を行い、
+自宅の扉を開けたらファミマの入店音を再生することを目的に試作を行い、
 その際に得られたTWE-Lite DIPの使い方や考察についてまとめた。
 
 * ![TWE-Lite DIP](http://tocos-wireless.com/assets/TWE-Lite-DIP-match.jpg) ![ToCoStick](http://tocos-wireless.com/jp/products/TWE-Lite-USB/IMG_0909.jpg)
